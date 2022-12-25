@@ -8,6 +8,22 @@ const horizontal = document.querySelector(".horizontal");
 const vertical = document.querySelector(".vertical");
 const mainBar = document.querySelector(".main-bar");
 const downloadBtn = document.querySelector(".right button");
+const myCanvas = document.getElementById("myCanvas");
+
+import { toJpeg } from 'html-to-image';
+
+function downloadThumbnail(e) {
+    toJpeg(mainBar, { quality: 0.95 })
+    .then(function (dataUrl) {
+        const link = document.createElement('a');
+        link.download = 'thumbnail.jpeg';
+        link.href = dataUrl;
+        link.click();
+        link.remove();
+  });
+}
+
+downloadBtn.addEventListener("click", downloadThumbnail);
 
 
 function loadFile(e) {
@@ -20,8 +36,12 @@ function loadFile(e) {
         previewImg.classList.add("size"); 
         mainBar.style.backgroundColor = "cyan";
         mainBar.style.padding = horizontal.value + "px";
+        // var canvas = document.getElementById("myCanvas");
+        // var ctx = canvas.getContext("2d");
+        // var img = document.querySelector("img");
+        // ctx.drawImage(img, 20, 20, canvas.width, canvas.height);
     })
-}
+} 
 
 fileInput.addEventListener("change", loadFile)
 uploadBox.addEventListener("click", () => fileInput.click());
@@ -40,15 +60,30 @@ vertical.oninput = function() {
     mainBar.style.paddingBottom = this.value + "px";
 }
 
-function downloadMockUp() {
-    const canvas = document.createElement("canvas");
-    const a = document.createElement("a");
-    const ctx = canvas.getContext("2d");
+
+
+
+
+
+
+// function downloadMockUp() {
+//     const canvas = document.getElementById("myCanvas");
+//     const a = document.createElement("a");
+//     const ctx = canvas.getContext("2d");
+//     ctx.globalCompositeOperation = "destination-over";    
+
+//     canvas.width = mainBar.offsetWidth;
+//     canvas.height = mainBar.offsetHeight;
 
     
-}
+//     // ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+//     ctx.fillRect(0, 0, canvas.width, canvas.height);
+//     ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+    
+//     a.href = canvas.toDataURL("image/jpeg", 1);
+//     a.download = "canvas.png";
+//     a.click();
+    
+// }
 
-downloadBtn.addEventListener("click", downloadMockUp);
-
-
-
+// downloadBtn.addEventListener("click", downloadMockUp);

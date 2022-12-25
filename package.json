@@ -1,0 +1,28 @@
+{
+  "name": "screeny",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lifesaver43/screeny.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lifesaver43/screeny/issues"
+  },
+  "homepage": "https://github.com/lifesaver43/screeny#readme",
+  "devDependencies": {
+    "parcel": "^2.8.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "html-to-image": "^1.11.2"
+  }
+}
